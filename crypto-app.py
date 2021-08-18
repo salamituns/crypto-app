@@ -1,3 +1,5 @@
+#---------------------------------#
+#importing dependencies
 import streamlit as st
 from PIL import Image
 import pandas as pd
@@ -7,13 +9,10 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
-# New feature (make sure to upgrade your streamlit library)
-# pip install --upgrade streamlit
 
 #---------------------------------#
 # Page layout
-## Page expands to full width
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")  ## Page expands to full width
 #---------------------------------#
 # Title
 
@@ -48,6 +47,7 @@ col1.header('Input Options')
 ## Sidebar - Currency price unit
 currency_price_unit = col1.selectbox('Select currency for price', ('USD','BTC','ETH'))
 
+#---------------------------------#
 # Web scraping of CoinMarketCap data
 @st.cache
 def load_data():
@@ -89,6 +89,9 @@ def load_data():
     return df
 
 df = load_data()
+
+#---------------------------------#
+#sidebars
 
 ## Sidebar - Cryptocurrency selections
 sorted_coin = sorted( df['coin_symbol'] )
